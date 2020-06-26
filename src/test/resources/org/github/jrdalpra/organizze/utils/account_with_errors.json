@@ -1,0 +1,15 @@
+{
+  "id": null,
+  "name": null,
+  "description": "Minha conta corrente",
+  "archived": false,
+  "created_at": null,
+  "updated_at": null,
+  "default": false,
+  "errors": {
+    "name": [
+      "não pode estar em branco"
+    ]
+  },
+  "type": "checking"
+}
