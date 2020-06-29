@@ -11,7 +11,7 @@ import org.github.jrdalpra.organizze.utils.ErrorAware;
 @AllArgsConstructor
 @ToString(includeFieldNames = true, callSuper = true)
 @Builder(builderMethodName = "with", buildMethodName = "get")
-public class Account extends ErrorAware {
+public class Account extends ErrorAware implements Resource {
     Integer id;
     String name, description;
     Boolean archived;

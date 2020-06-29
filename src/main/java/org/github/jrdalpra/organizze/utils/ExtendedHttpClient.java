@@ -37,5 +37,21 @@ public class ExtendedHttpClient extends HttpClient {
         );
     }
 
+    @SneakyThrows
+    public <T> HttpResponse<T> put(URI uri, T value) {
+        return this.send(
+                HttpRequest.newBuilder(uri).PUT(handler.serialize(value)).build(),
+                handler.deserialize(value.getClass())
+        );
+    }
+
+    @SneakyThrows
+    public HttpResponse<Void> delete(URI uri) {
+        return this.send(
+                HttpRequest.newBuilder(uri).DELETE().build(),
+                HttpResponse.BodyHandlers.discarding()
+        );
+    }
+
 
 }

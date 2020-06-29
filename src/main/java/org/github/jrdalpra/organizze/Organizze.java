@@ -44,12 +44,12 @@ public class Organizze {
         this(username, password, Logger.getLogger(Organizze.class.getName()));
     }
 
-    public Users users() {
-        return new Users(this.http, this.root);
+    public ReadOnlyEndpoint<User> users() {
+        return new ReadOnlyEndpoint<>(this.http, this.root.slash("users"), User.class, User[].class);
     }
 
-    public Accounts accounts() {
-        return new Accounts(this.http, this.root);
+    public ReadAnWriteEndpoint<Account> accounts() {
+        return new ReadAnWriteEndpoint<>(this.http, this.root.slash("accounts"), Account.class, Account[].class);
     }
 
 }

@@ -8,7 +8,7 @@ import org.github.jrdalpra.organizze.utils.ErrorAware;
 @AllArgsConstructor
 @ToString(includeFieldNames = true, callSuper = true)
 @EqualsAndHashCode
-public class User extends ErrorAware {
+public class User extends ErrorAware implements Resource {
     Integer id;
     String name, email, role;
 }
