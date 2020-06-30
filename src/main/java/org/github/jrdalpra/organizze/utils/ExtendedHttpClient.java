@@ -12,7 +12,7 @@ import lombok.experimental.Delegate;
 import lombok.experimental.FieldDefaults;
 
 @AllArgsConstructor
-@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+@FieldDefaults(makeFinal = true, level = AccessLevel.PROTECTED)
 public class ExtendedHttpClient extends HttpClient {
 
     @Delegate

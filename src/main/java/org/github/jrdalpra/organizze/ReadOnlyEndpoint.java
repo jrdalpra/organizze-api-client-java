@@ -20,8 +20,8 @@ public class ReadOnlyEndpoint<T extends Resource> {
     public ReadOnlyEndpoint(ExtendedHttpClient http, ExtendedURI root, Class<T> single, Class multiple) {
         this.http = http;
         this.address = root;
-        this.single=single;
-        this.multiple=multiple;
+        this.single = single;
+        this.multiple = multiple;
     }
 
     @SneakyThrows
@@ -32,6 +32,14 @@ public class ReadOnlyEndpoint<T extends Resource> {
     @SneakyThrows
     public HttpResponse<T> get(Integer id) {
         return this.http.get(this.address.slash(id).uri(), this.single);
+    }
+
+    public HttpResponse<T[]> list(Object... args) {
+        var path = this.address;
+        for (var arg : args) {
+            path = path.slash(arg);
+        }
+        return this.http.get(path.uri(), this.multiple);
     }
 
 }
