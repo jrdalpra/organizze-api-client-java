@@ -24,3 +24,9 @@ jobs:
       - run:
           name: Test
           command: mvn package -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - tests
