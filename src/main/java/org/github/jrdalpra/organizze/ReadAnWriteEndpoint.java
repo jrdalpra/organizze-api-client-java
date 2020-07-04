@@ -22,4 +22,16 @@ public class ReadAnWriteEndpoint<T extends Resource> extends ReadOnlyEndpoint<T>
     public HttpResponse<Void> delete(T value) {
         return this.http.delete(this.address.slash(value.getId()).uri());
     }
+
+    public static interface Post<T extends Resource> {
+        HttpResponse<T> post(T value);
+    }
+
+    public static interface Put<T extends Resource> {
+        HttpResponse<T> post(T value);
+    }
+
+    public static interface Delete<T extends Resource> {
+        HttpResponse<T> post(T value);
+    }
 }

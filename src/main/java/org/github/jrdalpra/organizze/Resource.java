@@ -1,5 +1,7 @@
 package org.github.jrdalpra.organizze;
 
-public interface Resource {
-    Integer getId();
+import org.github.jrdalpra.organizze.utils.ErrorAware;
+
+public abstract class Resource extends ErrorAware {
+    public abstract Integer getId();
 }

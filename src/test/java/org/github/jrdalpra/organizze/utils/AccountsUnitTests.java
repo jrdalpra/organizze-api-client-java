@@ -91,9 +91,12 @@ public class AccountsUnitTests extends OrganizzeUnitTests {
     @Test
     public void builder_must_build_expected_result() {
         var account = Account.with().name("name").type("checking").description("description").defaultOne(false).get();
-        assertThat("", account.getName(), equalTo("name"));
-        assertThat("", account.getType(), equalTo("checking"));
-        assertThat("", account.getDescription(), equalTo("description"));
-        assertThat("", account.getDefaultOne(), equalTo(false));
+        assertThat("Name not expected", account.getName(), equalTo("name"));
+        assertThat("Type not expected", account.getType(), equalTo("checking"));
+        assertThat("Description not expected", account.getDescription(), equalTo("description"));
+        assertThat("Default not expected", account.getDefaultOne(), equalTo(false));
+        assertThat("ToString not expected",
+                account.toString(),
+                equalTo("Account(super=ErrorAware(error=null, errors=null), id=null, name=name, description=description, archived=null, created_at=null, updated_at=null, defaultOne=false, type=checking)"));
     }
 }
