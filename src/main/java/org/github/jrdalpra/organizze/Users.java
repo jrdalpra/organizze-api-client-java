@@ -10,18 +10,18 @@ import org.github.jrdalpra.organizze.utils.ExtendedURI;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class Users {
 
-    ReadOnlyEndpoint<User> client;
+    Endpoint<User> endpoint;
 
     public Users(ExtendedHttpClient http, ExtendedURI root) {
-        this.client = new ReadOnlyEndpoint<User>(http, root.slash("users"), User.class, User[].class);
+        this.endpoint = new Endpoint<User>(http, root.slash("users"), User.class, User[].class);
     }
 
     public HttpResponse<User[]> get() {
-        return client.get();
+        return this.endpoint.get();
     }
 
     public HttpResponse<User> get(Integer id) {
-        return client.get(id);
+        return this.endpoint.get(id);
     }
 
 }
