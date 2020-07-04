@@ -17,10 +17,11 @@ public class Users {
     }
 
     public HttpResponse<User[]> get() {
-        return this.client.get();
+        return client.get();
     }
 
     public HttpResponse<User> get(Integer id) {
-        return this.client.get(id);
+        return client.get(id);
     }
+
 }

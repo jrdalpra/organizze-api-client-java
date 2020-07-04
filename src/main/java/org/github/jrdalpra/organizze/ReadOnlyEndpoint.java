@@ -41,4 +41,13 @@ public class ReadOnlyEndpoint<T extends Resource> {
         }
         return this.http.get(path.uri(), this.multiple);
     }
+
+    public static interface Get<T extends Resource>{
+        HttpResponse<T[]> get();
+        HttpResponse<T> get(Integer id);
+    }
+
+    public static interface List<T extends Resource> {
+        HttpResponse<T[]> list(Object... args);
+    }
 }
