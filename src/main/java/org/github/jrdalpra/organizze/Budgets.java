@@ -10,9 +10,9 @@ import org.github.jrdalpra.organizze.utils.ExtendedURI;
 public class Budgets {
 
     @Delegate
-    ReadAnWriteEndpoint<Budget> client;
+    Endpoint<Budget> endpoint;
 
     public Budgets(ExtendedHttpClient http, ExtendedURI root) {
-        this.client = new ReadAnWriteEndpoint<Budget>(http, root.slash("budgets"), Budget.class, Budget[].class);
+        this.endpoint = new Endpoint<Budget>(http, root.slash("budgets"), Budget.class, Budget[].class);
     }
 }

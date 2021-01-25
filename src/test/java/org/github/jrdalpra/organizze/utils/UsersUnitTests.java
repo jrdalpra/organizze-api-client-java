@@ -30,6 +30,11 @@ public class UsersUnitTests extends OrganizzeUnitTests {
         var actual = this.organizze.users().get(3).body();
         assertThat("Users should not be null", actual, not(nullValue()));
         assertThat("User is not the one expected", actual, equalTo(this.expectedUser));
+        assertThat(
+                "ToString is not expected",
+                actual.toString(),
+                equalTo("User(super=ErrorAware(error=null, errors=null), id=3, name=Esdras Mayrink, email=falecom@email.com.br, role=admin)")
+        );
     }
 }
 

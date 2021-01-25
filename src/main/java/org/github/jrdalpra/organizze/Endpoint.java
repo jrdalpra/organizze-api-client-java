@@ -8,16 +8,20 @@ import lombok.experimental.FieldDefaults;
 import org.github.jrdalpra.organizze.utils.ExtendedHttpClient;
 import org.github.jrdalpra.organizze.utils.ExtendedURI;
 
-
+/**
+ * Endpoint is a utility class to easily call GET, POST, PUT and DELETE methods
+ *
+ * @param <T>
+ */
 @FieldDefaults(level = AccessLevel.PROTECTED, makeFinal = true)
-public class ReadOnlyEndpoint<T extends Resource> {
+public class Endpoint<T extends Resource> {
 
     ExtendedHttpClient http;
     ExtendedURI address;
     Class<T> single;
     Class<T[]> multiple;
 
-    public ReadOnlyEndpoint(ExtendedHttpClient http, ExtendedURI root, Class<T> single, Class multiple) {
+    public Endpoint(ExtendedHttpClient http, ExtendedURI root, Class<T> single, Class multiple) {
         this.http = http;
         this.address = root;
         this.single = single;
@@ -42,13 +46,15 @@ public class ReadOnlyEndpoint<T extends Resource> {
         return this.http.get(path.uri(), this.multiple);
     }
 
-    public static interface Get<T extends Resource> {
-        HttpResponse<T[]> get();
-
-        HttpResponse<T> get(Integer id);
+    public HttpResponse<T> post(T value) {
+        return this.http.post(this.address.uri(), value);
     }
 
-    public static interface List<T extends Resource> {
-        HttpResponse<T[]> list(Object... args);
+    public HttpResponse<T> put(T value) {
+        return this.http.put(this.address.slash(value.getId()).uri(), value);
+    }
+
+    public HttpResponse<Void> delete(T value) {
+        return this.http.delete(this.address.slash(value.getId()).uri());
     }
 }
